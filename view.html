@@ -25,9 +25,9 @@
       <br>
 
       <div class="text-center">
-        <a href="make.html"><button class="btn btn-lg btn-danger"><span class="fa fa-credit-card"></span> Make
+        <a href="./reserve"><button class="btn btn-lg btn-danger"><span class="fa fa-credit-card"></span> Make
             Reservation</button></a>
-        <a href="home.html"><button class="btn btn-lg btn-default"><span class="fa fa-home"></span> Home</button></a>
+        <a href="/"><button class="btn btn-lg btn-default"><span class="fa fa-home"></span> Home</button></a>
       </div>
     </div>
 
@@ -58,13 +58,20 @@
       <div class="links"><br>
         <p>Control Panel</p>
         <p>
-          <a href="clear_table">Clear Table</a> | <a href="api_table_link">API Table Link</a> |
-          <a href="api_wait_list">API Wait List</a>
+          <a href="" id="clear">Clear Table</a> | <a href="api/tables">API Table Link</a> |
+          <a href="api/waitlist">API Wait List</a>
         </p>
       </div>
     </footer>
   </div>
+  <script type="text/javascript">
+    function renderTables() {
+      const tables = $.get("api/tables", function () {
 
+      });
+    }
+
+  </script>
 </body>
 
 </html>

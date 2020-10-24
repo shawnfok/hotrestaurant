@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 
 const app = express();
 const PORT = 8080;
@@ -10,27 +11,28 @@ let tables = [];
 let waitList = [];
 
 app.get("/", function (req, res) {
-    res.send("Welcome to the homepage");
+    res.sendFile(path.join(__dirname, "home.html"));
 });
 
 app.get("/tables", function (req, res) {
-    res.send("Welcom to the tables");
+    res.sendFile(path.join(__dirname, "view.html"));
 });
 
 app.get("/reserve", function (req, res) {
-    res.send("Welcom to reservation");
+    res.sendFile(path.join(__dirname, "make.html"));
 });
 
 app.get("/api/tables", function (req, res) {
-    return res.json(tables);
+    res.json(tables);
 });
 
 app.get("/api/waitlist", function (req, res) {
-    return res.json(waitList);
+    res.json(waitList);
 });
 
 app.post("/api/tables", function (req, res) {
     let newTable = req.body;
+    console.log(newTable);
     if (tables.length < 5) {
         tables.push(newTable);
         // console.log(newTable);
@@ -45,16 +47,6 @@ app.post("/api/tables", function (req, res) {
 
     res.json(newTable);
 });
-
-// app.post("/api/waitlist", function (req, res) {
-//     let newTable = req.body;
-//     console.log(newTable);
-//     waitList.push(newTable);
-//     res.json(newTable);
-// });
-
-
-
 
 
 app.listen(PORT, function () {
